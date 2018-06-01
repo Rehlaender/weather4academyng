@@ -1,22 +1,9 @@
-<h1>First reducer</h1>
-<button (click)="increment()">Increment</button>
-<div>Current Count: {{ count$ | async }}</div>
-<button (click)="decrement()">Decrement</button>
+<h1>cities reducer</h1>
 
-<button (click)="reset()">Reset Counter</button>
-
-<button (click)="sayHi()">sayHi</button>
+<cityform></cityform>
 
 <ul>
-  <p>this aint a children component</p>
-  <li *ngFor="let city of cities">
-    <button (click)="sayHi(city)">{{city.name}}</button>
-  </li>
-</ul>
-
-<ul>
-  <p>this is a children component</p>
-  <li *ngFor="let city of cities">
-    <city-component [city]="city" (sayHi)="sayHi($event)"></city-component>
+  <li *ngFor="let city of ( count | async ).cities">
+    {{city?.name}}
   </li>
 </ul>

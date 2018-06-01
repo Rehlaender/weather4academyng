@@ -14,11 +14,8 @@ interface AppState {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  count$: Observable<number>;
+  count$: Observable<any>;
   title = 'app';
-  cities = [
-    { id: 1, name: "monterrey"}, {id: 2, name: "not monterrey" }
-  ]
   constructor(private store: Store<AppState>) {
     this.count$ = store.pipe(select('count'));
   }

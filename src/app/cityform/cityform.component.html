@@ -1,0 +1,11 @@
+<form>
+  <div class="form-group">
+    <label for="name">city name</label>
+    <input type="text" class="form-control" id="city" required
+            [(ngModel)]="model.city" name="city">
+  </div>
+  <p>{{model.city}}</p>
+  <button type="button" class="btn btn-default" (click)="addCity(model)">New Hero</button>
+
+
+</form>
