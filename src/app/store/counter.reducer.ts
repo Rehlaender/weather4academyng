@@ -1,19 +1,31 @@
 import { Action } from '@ngrx/store';
 
+import * as CounterActions from './counter.actions';
+
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
 export const SAYHI = 'SAYHI';
 
-export function counterReducer(state: number = 0, action: Action) {
+const initialState = {
+  state: 0,
+  cities: [
+    {
+      id: 1,
+      name: 'monterrey from store'
+    }
+  ]
+}
+
+export function counterReducer(state = initialState, action: Action) {
   switch (action.type) {
     case INCREMENT:
       console.log('increment');
-      return state + 1;
+      return state.state + 1;
 
     case DECREMENT:
       console.log('decrement');
-      return state - 1;
+      return state.state - 1;
 
     case RESET:
       console.log('reset');
