@@ -23,7 +23,7 @@ export class CityListComponent implements OnInit {
 
   ngOnInit() {
     console.log('asdf');
-    this.store.dispatch({ type: CitiesActionType.GET_CITY });
+    // this.store.dispatch({ type: CitiesActionType.GET_CITY });
 	}
 
 }

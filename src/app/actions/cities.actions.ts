@@ -1,9 +1,5 @@
 import { Action } from '@ngrx/store';
 
-export const GET_CITY = 'GET_CITY';
-export const GET_CITY_SUCCESS = 'GET_CITY_SUCCESS';
-export const GET_CITY_ERROR = 'GET_CITY_ERROR';
-
 export enum CitiesActionType {
   GET_CITY = '[City] GET',
   GET_CITY_SUCCESS = '[City] GET Succes',
