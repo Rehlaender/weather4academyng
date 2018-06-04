@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { ASK } from '../actions/weather.actions';
+import { CitiesActionType } from '../actions/cities.actions';
+
+
 @Component({
-  selector: 'app-city-list',
+  selector: 'city-list',
   templateUrl: './city-list.component.html',
   styleUrls: ['./city-list.component.css']
 })
 export class CityListComponent implements OnInit {
+  cities$: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private store: Store<any>
+  ) {
+    this.cities$ = store.pipe(select('cities'));
+  }
 
   ngOnInit() {
-  }
+    console.log('asdf');
+    this.store.dispatch({ type: CitiesActionType.GET_CITY });
+	}
 
 }

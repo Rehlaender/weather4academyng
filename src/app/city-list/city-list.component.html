@@ -1,3 +1,6 @@
 <p>
   city-list works!
 </p>
+<ul>
+  <li *ngFor="let city of cities$ | async">{{city.name}}</li>
+</ul>
