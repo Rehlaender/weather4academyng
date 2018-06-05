@@ -29,7 +29,6 @@ import { AppEffects } from './app.effects';
 import { CitiesEffects } from './effects/cities.effects';
 
 // services
-import { LocalStorageService } from './services/local-storage.service';
 
 import { environment } from '../environments/environment';
 
@@ -52,7 +51,6 @@ import { environment } from '../environments/environment';
     EffectsModule.forRoot([AppEffects, CitiesEffects]),
   ],
   providers: [
-    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })
