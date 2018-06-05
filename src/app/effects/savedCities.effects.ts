@@ -5,7 +5,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
-import { LocalStorageService } from '../services/local-storage.service';
+import { SearchCityService } from '../services/search-city.service';
 
 import {
   SavedCitiesActionType,
@@ -19,21 +19,21 @@ import {
   CitiesActionType
 } from '../actions/cities.actions';
 
-
 @Injectable()
 export class SavedCitiesEffects {
 
   @Effect()
-  getCities$: Observable<Action> = this.actions$.pipe(
+  searchCity$: Observable<Action> = this.actions$.pipe(
+    ofType(SavedCitiesActionType.SEARCH_CITY),
     mergeMap(action =>
-      this.http.get('http://api.openweathermap.org/data/2.5/weather?q=tokyo,japan&units=metric&APPID=ea07077cbdfd161a3a94b6572515407d').pipe(
-        // If successful, dispatch success action with result
-        map(data => ({ type: CitiesActionType.GET_CITY_SUCCESS, payload: data })),
+      this._searchCityService.searchCity(action).pipe(
+        // If successful, dispatch success action with resutlt
+        map(data => ({ type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data })),
         // If request fails, dispatch failed action
-        catchError(() => of({ type: CitiesActionType.GET_CITY_ERROR }))
+        catchError((error) => of({ type: SavedCitiesActionType.SEARCH_CITY_FAILURE, payload: error }))
       )
     )
   );
 
-  constructor(private http: HttpClient, private _localStorage: LocalStorageService, private actions$: Actions) {}
+  constructor(private http: HttpClient, private _searchCityService: SearchCityService, private actions$: Actions) {}
 }
