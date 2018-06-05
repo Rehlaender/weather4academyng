@@ -27,8 +27,10 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppEffects } from './app.effects';
 import { CitiesEffects } from './effects/cities.effects';
+import { SavedCitiesEffects } from './effects/savedCities.effects';
 
 // services
+import { SearchCityService } from './services/search-city.service';
 
 import { environment } from '../environments/environment';
 
@@ -48,9 +50,10 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects, CitiesEffects]),
+    EffectsModule.forRoot([AppEffects, CitiesEffects, SavedCitiesEffects]),
   ],
   providers: [
+    SearchCityService
   ],
   bootstrap: [AppComponent]
 })
