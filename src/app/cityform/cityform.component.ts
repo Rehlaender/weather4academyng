@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as WeatherActions from '../actions/weather.actions';
+import { SearchCity } from '../actions/savedCities.actions';
 
 import { Store } from '@ngrx/store';
 
@@ -10,15 +10,20 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./cityform.component.css']
 })
 export class CityformComponent implements OnInit {
+
   private model = {
     city: '',
-    id: 5
+    country: '',
+    id: null,
+    searchBy: ''
   }
+
   constructor(private store: Store<any>) { }
 
   addCity(city) {
-    // this.store.dispatch(new WeatherActions.AddCity(city));
     console.log(city, 'asdf');
+    // this.store.dispatch({ type: CitiesActionType.GET_CITY });
+    this.store.dispatch( new SearchCity(city));
   }
 
   ngOnInit() {

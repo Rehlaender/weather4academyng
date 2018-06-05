@@ -18,7 +18,7 @@ export class CityListComponent implements OnInit {
   constructor(
     private store: Store<any>
   ) {
-    this.cities$ = store.pipe(select('cities'));
+    this.cities$ = store.pipe(select('savedCities'));
   }
 
   ngOnInit() {

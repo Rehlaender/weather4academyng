@@ -1,11 +1,34 @@
 <form>
   <div class="form-group">
-    <label for="name">city name</label>
-    <input type="text" class="form-control" id="city" required
-            [(ngModel)]="model.city" name="city">
+
+    <label for="searchBy">Search a location for weather reporting:</label>
+    <div class="radioGroup">
+      by city name <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byCity">
+      by city and country names <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byCityAndCountry">
+      by city id <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byId">
+    </div>
+
+    <div class="form-control" *ngIf="model.searchBy === 'byCity' || model.searchBy === 'byCityAndCountry'">
+      <label for="city">city name:</label>
+      <input type="text" class="form-control" id="city" required
+              [(ngModel)]="model.city" name="city">
+    </div>
+    <div class="form-control" *ngIf="model.searchBy === 'byCityAndCountry'">
+      <label for="country">country name:</label>
+      <input type="text" class="form-control" id="city" required
+              [(ngModel)]="model.country" name="city">
+    </div>
+    <div class="form-control" *ngIf="model.searchBy === 'byId'">
+      <label for="cityId">city id: </label>
+      <input type="text" class="form-control" id="cityId" required
+              [(ngModel)]="model.id" name="cityId">
+    </div>
   </div>
+
   <p>{{model.city}}</p>
+  <p>{{model.country}}</p>
+  <p>{{model.id}}</p>
+  <p>{{model.searchBy}}</p>
+
   <button type="button" class="btn btn-default" (click)="addCity(model)">New Hero</button>
-
-
 </form>
