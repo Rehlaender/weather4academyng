@@ -15,7 +15,6 @@ export function reducer(state = initialState, action: SavedCitiesActionsUnion) {
         action.payload
       ];
     case SavedCitiesActionType.SEARCH_CITY_FAILURE:
-      console.log('no encuentro esa ciudad', action.payload.error);
       return state;
     default:
       return state;

@@ -19,6 +19,11 @@ import {
   CitiesActionType
 } from '../actions/cities.actions';
 
+import {
+  UmaruActionType
+} from '../actions/umaru.actions';
+import { umaruMessages } from '../constants/umaruMessages';
+
 @Injectable()
 export class SavedCitiesEffects {
 
@@ -30,7 +35,10 @@ export class SavedCitiesEffects {
         // If successful, dispatch success action with resutlt
         map(data => ({ type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data })),
         // If request fails, dispatch failed action
-        catchError((error) => of({ type: SavedCitiesActionType.SEARCH_CITY_FAILURE, payload: error }))
+        catchError((error) => of(
+          { type: SavedCitiesActionType.SEARCH_CITY_FAILURE, payload: error },
+          { type: UmaruActionType.SUCCESS_MESSAGE, payload: {message: umaruMessages.successMessage} },
+        ))
       )
     )
   );
