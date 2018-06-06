@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { SearchCityService } from '../services/search-city.service';
 
@@ -13,6 +13,7 @@ import {
   SetCitiesInStore,
   AddCity,
   DeleteCity,
+  SavedCitiesActionsUnion,
 } from '../actions/savedCities.actions';
 
 import {
@@ -33,11 +34,17 @@ export class SavedCitiesEffects {
     mergeMap(action =>
       this._searchCityService.searchCity(action).pipe(
         // If successful, dispatch success action with resutlt
-        map(data => ({ type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data })),
+        // map(data => (
+        //     { type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data }
+        //   )
+        // ),
+        switchMap(data => [
+            { type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data },
+            { type: UmaruActionType.SUCCESS_MESSAGE, payload: {message: umaruMessages.successCityMessage(data)} }
+        ]),
         // If request fails, dispatch failed action
         catchError((error) => of(
           { type: SavedCitiesActionType.SEARCH_CITY_FAILURE, payload: error },
-          { type: UmaruActionType.SUCCESS_MESSAGE, payload: {message: umaruMessages.successMessage} },
         ))
       )
     )

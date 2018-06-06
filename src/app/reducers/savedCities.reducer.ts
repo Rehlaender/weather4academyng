@@ -6,10 +6,10 @@ const initialState = (savedCitiesStorage !== null) ? savedCitiesStorage : [];
 export function reducer(state = initialState, action: SavedCitiesActionsUnion) {
   switch (action.type) {
     case SavedCitiesActionType.SEARCH_CITY:
-      console.log('search this city', action);
+      console.log('[saved cities] search this city', action);
       return state;
     case SavedCitiesActionType.SEARCH_CITY_SUCCESS:
-      console.log('encontré esto', action.payload);
+      console.log('[saved cities] encontré esto', action.payload);
       return [
         ...state,
         action.payload

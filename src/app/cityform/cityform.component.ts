@@ -21,8 +21,6 @@ export class CityformComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   addCity(city) {
-    console.log(city, 'asdf');
-    // this.store.dispatch({ type: CitiesActionType.GET_CITY });
     this.store.dispatch( new SearchCity(city));
   }
 

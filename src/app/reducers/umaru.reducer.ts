@@ -10,7 +10,7 @@ export function reducer(state = initialState, action: UmaruActionsUnion) {
   switch (action.type) {
     case UmaruActionType.SUCCESS_MESSAGE:
       const {message} = action.payload;
-      console.log(message);
+      console.log("[umaru message]", message);
       return {
         ...state,
         emotion: 'happy',

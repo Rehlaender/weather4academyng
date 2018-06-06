@@ -33,6 +33,7 @@ import { SavedCitiesEffects } from './effects/savedCities.effects';
 import { SearchCityService } from './services/search-city.service';
 
 import { environment } from '../environments/environment';
+import { UmaruComponent } from './umaru/umaru.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
     CityComponentComponent,
     CityformComponent,
     CityListComponent,
-    HomeViewComponent
+    HomeViewComponent,
+    UmaruComponent
   ],
   imports: [
     BrowserModule,

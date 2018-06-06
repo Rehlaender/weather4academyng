@@ -10,10 +10,8 @@ const initialState = [
 export function reducer(state = initialState, action: CitiesActionsUnion) {
   switch (action.type) {
     case CitiesActionType.GET_CITY:
-      console.log('getCity aloja iegó aquí', action);
       return state;
     case CitiesActionType.GET_CITY_SUCCESS:
-      console.log('getCity', action.payload);
       return state;
     default:
       return state;

@@ -15,7 +15,6 @@ export class SearchCityService {
 
   searchCity(action) {
     const { city, country, id, searchBy } = action.payload;
-    console.log(searchBy, 'asdfu');
     switch (searchBy) {
       case "byCity":
         return this.http.get(`${rootUri}${searchByCity}${city}${useUnits}${apiKey}`);

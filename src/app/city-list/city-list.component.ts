@@ -21,9 +21,6 @@ export class CityListComponent implements OnInit {
     this.cities$ = store.pipe(select('savedCities'));
   }
 
-  ngOnInit() {
-    console.log('asdf');
-    // this.store.dispatch({ type: CitiesActionType.GET_CITY });
-	}
+  ngOnInit() {}
 
 }
