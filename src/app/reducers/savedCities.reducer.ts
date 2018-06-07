@@ -14,6 +14,12 @@ export function reducer(state = initialState, action: SavedCitiesActionsUnion) {
         ...state,
         action.payload
       ];
+    case SavedCitiesActionType.DELETE_CITY:
+      console.log('[saved cities] borraré esto', action.payload);
+      const newCities = state.filter(city => city.id != action.payload.id);
+      return [
+        ...newCities
+      ];
     case SavedCitiesActionType.SEARCH_CITY_FAILURE:
       return state;
     default:

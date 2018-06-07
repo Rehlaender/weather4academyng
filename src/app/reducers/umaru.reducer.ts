@@ -1,6 +1,7 @@
 import {UmaruActionType, UmaruActionsUnion} from '../actions/umaru.actions';
 
 const initialState = {
+  isVisible: false,
   emotion: 'happy',
   mesesage: '',
   data: {}
@@ -15,6 +16,12 @@ export function reducer(state = initialState, action: UmaruActionsUnion) {
         ...state,
         emotion: 'happy',
         message
+      };
+    case UmaruActionType.TOGGLE_VISIBILITY:
+      const {isVisible} = action.payload;
+      return {
+        ...state,
+        !isVisible
       };
     case UmaruActionType.FAILURE_MESSAGE:
       return {

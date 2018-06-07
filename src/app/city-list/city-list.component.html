@@ -2,5 +2,7 @@
   city-list works!
 </p>
 <ul>
-  <li *ngFor="let city of cities$ | async">{{city.name}}</li>
+  <li *ngFor="let city of cities$ | async"
+    (click)="deleteCity(city)">{{city.name}}
+  </li>
 </ul>

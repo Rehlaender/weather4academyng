@@ -41,6 +41,7 @@ export class AddCity implements Action {
 
 export class DeleteCity implements Action {
   readonly type = SavedCitiesActionType.DELETE_CITY;
+  constructor(public payload: {id: any}) {}
 }
 
 export type SavedCitiesActionsUnion = GetCitiesInStorage

@@ -34,10 +34,6 @@ export class SavedCitiesEffects {
     mergeMap(action =>
       this._searchCityService.searchCity(action).pipe(
         // If successful, dispatch success action with resutlt
-        // map(data => (
-        //     { type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data }
-        //   )
-        // ),
         switchMap(data => [
             { type: SavedCitiesActionType.SEARCH_CITY_SUCCESS, payload: data },
             { type: UmaruActionType.SUCCESS_MESSAGE, payload: {message: umaruMessages.successCityMessage(data)} }

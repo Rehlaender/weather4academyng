@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { ASK } from '../actions/weather.actions';
+import { DeleteCity } from '../actions/savedCities.actions';
+
 import { CitiesActionType } from '../actions/cities.actions';
 
 
@@ -20,6 +21,11 @@ export class CityListComponent implements OnInit {
   ) {
     this.cities$ = store.pipe(select('savedCities'));
   }
+
+  deleteCity(city) {
+    this.store.dispatch( new DeleteCity({id: city.id}));
+  }
+
 
   ngOnInit() {}
 
