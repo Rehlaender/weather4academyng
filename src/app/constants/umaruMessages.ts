@@ -5,6 +5,7 @@ export const umaruMessages = {
   successMessageAfterCitySearch: 'Succes, I found that city',
   failureMessageAfterCitySearch: 'Sorry, I couldnt find that city',
   questionMessage: 'Do you really want to do that?',
+  youHaveThatCityMessage: 'You already have that city',
   successCityMessage: (data) => successCityMessage(data),
   deleteCityMessage: (data) => deleteCityMessage(data),
   failureCityMessage: (data) => failureCityMessage(data),
