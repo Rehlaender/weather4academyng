@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
@@ -17,12 +18,17 @@ import { CitiesActionType } from '../actions/cities.actions';
 export class CityListComponent implements OnInit {
   cities$: Observable<any>;
   temperature$: Observable<any>;
-
+  private temperature;
   constructor(
     private store: Store<any>
   ) {
     this.cities$ = store.pipe(select('savedCities'));
-    this.temperature$ = store.pipe(select('temperature'));
+    store.pipe(select('temperature')).subscribe(
+      data => {
+        console.log(data, 'this subscribe');
+        this.temperature = data;
+      }
+    );
   }
 
   deleteCity(city) {
@@ -34,8 +40,7 @@ export class CityListComponent implements OnInit {
   }
 
   returnMainTemp(temperature) {
-    return (this.temperature$.unit === 'f') ? (`${temperature - 273.15}°f`) : `${((temperature-273.15)*1.8)+32}°c`;
-
+    return (this.temperature === {units: 'f'}) ? (`${Math.floor(temperature - 273.15)}°f`) : `${Math.floor(((temperature-273.15)*1.8)+32)}°c`;
   }
 
   ngOnInit() {}
