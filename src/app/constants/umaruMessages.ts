@@ -6,11 +6,16 @@ export const umaruMessages = {
   failureMessageAfterCitySearch: 'Sorry, I couldnt find that city',
   questionMessage: 'Do you really want to do that?',
   successCityMessage: (data) => successCityMessage(data),
+  deleteCityMessage: (data) => deleteCityMessage(data),
   failureCityMessage: (data) => failureCityMessage(data),
 };
 
 function successCityMessage (data) {
   return `Success, I found ${data.name}`;
+}
+
+function deleteCityMessage (data) {
+  return `I deleted ${data.name}`;
 }
 
 function failureCityMessage (data) {

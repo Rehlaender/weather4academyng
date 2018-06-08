@@ -4,9 +4,10 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { DeleteCity } from '../actions/savedCities.actions';
+import { SuccessMessage } from '../actions/umaru.actions';
+import { umaruMessages } from '../constants/umaruMessages';
 
 import { CitiesActionType } from '../actions/cities.actions';
-
 
 @Component({
   selector: 'city-list',
@@ -23,7 +24,8 @@ export class CityListComponent implements OnInit {
   }
 
   deleteCity(city) {
-    this.store.dispatch( new DeleteCity({id: city.id}));
+    this.store.dispatch( new DeleteCity({city}));
+    this.store.dispatch( new SuccessMessage({message: umaruMessages.deleteCityMessage(city)}));
   }
 
 

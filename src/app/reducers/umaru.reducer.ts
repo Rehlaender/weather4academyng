@@ -15,13 +15,14 @@ export function reducer(state = initialState, action: UmaruActionsUnion) {
       return {
         ...state,
         emotion: 'happy',
-        message
+        isVisible: true,
+        message,
       };
     case UmaruActionType.TOGGLE_VISIBILITY:
       const {isVisible} = action.payload;
       return {
         ...state,
-        !isVisible
+        isVisible: !isVisible
       };
     case UmaruActionType.FAILURE_MESSAGE:
       return {
