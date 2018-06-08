@@ -8,6 +8,8 @@ export enum SavedCitiesActionType {
   SEARCH_CITY_FAILURE = '[SavedCities] search a city was a failure',
   ADD_CITY = '[SavedCities] add a city',
   DELETE_CITY = '[SavedCities] delet a city',
+  RELOAD_CITIES = '[SavedCities] reload cities',
+  RELOAD_CITIES_SUCCESS = '[SavedCities] reload cities success',
 }
 
 export class GetCitiesInStorage implements Action {
@@ -44,10 +46,22 @@ export class DeleteCity implements Action {
   constructor(public payload: any) {}
 }
 
+export class ReloadCities implements Action {
+  readonly type = SavedCitiesActionType.RELOAD_CITIES;
+  constructor(public payload: any) {}
+}
+
+export class ReloadCitiesSuccess implements Action {
+  readonly type = SavedCitiesActionType.RELOAD_CITIES_SUCCESS;
+  constructor(public payload: any) {}
+}
+
 export type SavedCitiesActionsUnion = GetCitiesInStorage
 | SetCitiesInStore
 | AddCity
 | DeleteCity
 | SearchCity
 | SearchCitySuccess
-| SearchCityFailure;
+| SearchCityFailure
+| ReloadCities
+| ReloadCitiesSuccess;
