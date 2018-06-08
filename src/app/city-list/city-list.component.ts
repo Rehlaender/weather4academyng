@@ -1,11 +1,13 @@
 
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { DeleteCity } from '../actions/savedCities.actions';
-import { SuccessMessage, Hide } from '../actions/umaru.actions';
+import { SuccessMessage, Hide, QuestionMessage } from '../actions/umaru.actions';
+import { ChangeCity } from '../actions/cityDetail.actions';
+
 import { umaruMessages } from '../constants/umaruMessages';
 
 import { CitiesActionType } from '../actions/cities.actions';
@@ -20,12 +22,12 @@ export class CityListComponent implements OnInit {
   temperature$: Observable<any>;
   private temperature;
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
+    private _router: Router
   ) {
     this.cities$ = store.pipe(select('savedCities'));
     store.pipe(select('temperature')).subscribe(
       data => {
-        console.log(data, 'this subscribe');
         this.temperature = data;
       }
     );
@@ -37,6 +39,16 @@ export class CityListComponent implements OnInit {
     setTimeout(() => {
       this.store.dispatch( new Hide());
     },3000);
+  }
+
+  goCity(city) {
+    console.log('city', city)
+    this.store.dispatch( new ChangeCity(city));
+    this.store.dispatch( new QuestionMessage({message: umaruMessages.cityDetailMessage(city)}));
+    setTimeout(() => {
+      this.store.dispatch( new Hide());
+    },3000);
+    this._router.navigate(['/detail']);
   }
 
   returnMainTemp(temperature) {

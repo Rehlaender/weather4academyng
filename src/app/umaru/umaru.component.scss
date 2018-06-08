@@ -20,7 +20,7 @@
 
 .message-container {
   height: auto;
-  background: rgba(0,0,0,0.2);
+  background: white;
   font-size: 1em;
   position: relative;
   left: -100px;
@@ -28,4 +28,5 @@
   border-radius: 1em;
   word-wrap: break-word;
   text-align: center;
+  color: #F08959;
 }

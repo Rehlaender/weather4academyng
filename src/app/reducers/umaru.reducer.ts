@@ -32,9 +32,11 @@ export function reducer(state = initialState, action: UmaruActionsUnion) {
         message: action.payload.message
       };
     case UmaruActionType.QUESTION_MESSAGE:
+      console.log(action.payload, 'lets go');
       return {
         ...state,
         emotion: 'question',
+        isVisible: true,
         message: action.payload.message
       };
     case UmaruActionType.HIDE:

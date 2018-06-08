@@ -13,6 +13,7 @@ import { CityListComponent } from './city-list/city-list.component';
 
 // containers
 import { HomeViewComponent } from "./containers/home-view/home-view.component";
+import { DetailsComponent } from './containers/details/details.component';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,8 @@ import { UmaruComponent } from './umaru/umaru.component';
     CityformComponent,
     CityListComponent,
     HomeViewComponent,
-    UmaruComponent
+    UmaruComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
