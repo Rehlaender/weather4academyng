@@ -5,7 +5,7 @@ const searchByCity = "q=";
 const searchByCityAndCountry = ",";
 const searchByCityId = "id=";
 const apiKey = "&APPID=ea07077cbdfd161a3a94b6572515407d";
-const useUnits = "&units=metric";
+const useUnits = "";
 const rootUri = "http://api.openweathermap.org/data/2.5/weather?";
 
 @Injectable()

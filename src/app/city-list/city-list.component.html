@@ -1,8 +1,9 @@
-<p>
-  city-list works!
-</p>
-<ul>
-  <li *ngFor="let city of cities$ | async"
-    (click)="deleteCity(city)">{{city.name}}
-  </li>
-</ul>
+<div class="city animated bounceIn" *ngFor="let city of cities$ | async">
+    <div class="buttonContainer">
+      <span class="detailButton" (click)="deleteCity(city)"><i class="fa fa-search">detail</i></span>
+      <span class="deleteButton" (click)="deleteCity(city)"><i class="fa fa-close">delete</i></span>
+    </div>
+    <span>{{city?.name}} : {{city?.sys.country}}</span>
+    <span>- {{city?.weather[0].main}} : {{city?.weather[0].description}}</span>
+    <span>Temperature : {{ returnMainTemp(city?.main.temp) }}</span>
+</div>

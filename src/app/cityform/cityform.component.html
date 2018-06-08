@@ -3,9 +3,9 @@
 
     <label for="searchBy">Search a location for weather reporting:</label>
     <div class="radioGroup">
-      by city name <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byCity">
-      by city and country names <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byCityAndCountry">
-      by city id <input [(ngModel)]="model.searchBy" type="radio" name="typeOfAdd" value="byId">
+      <div class="pointer" (click)="setSearchBy('byCity')" [ngClass]="{'selected': model.searchBy === 'byCity'}">search by city</div>
+      <div class="pointer" (click)="setSearchBy('byCityAndCountry')" [ngClass]="{'selected': model.searchBy === 'byCityAndCountry'}">search by city and country</div>
+      <div class="pointer" (click)="setSearchBy('byId')" [ngClass]="{'selected': model.searchBy === 'byId'}">search by city id</div>
     </div>
 
     <div class="form-control" *ngIf="model.searchBy === 'byCity' || model.searchBy === 'byCityAndCountry'">
@@ -24,11 +24,5 @@
               [(ngModel)]="model.id" name="cityId">
     </div>
   </div>
-
-  <p>{{model.city}}</p>
-  <p>{{model.country}}</p>
-  <p>{{model.id}}</p>
-  <p>{{model.searchBy}}</p>
-
-  <button type="button" class="btn btn-default" (click)="addCity(model)">New Hero</button>
+  <button *ngIf="model.searchBy != ''" type="button" class="btn btn-default" (click)="addCity(model)">Add city</button>
 </form>

@@ -1,0 +1,16 @@
+.radioGroup {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.radioGroup > div {
+  margin-right: 1em;
+  padding: 0.5em;
+  border: 1px solid white;
+}
+
+.selected {
+  background: white;
+  color: orange;
+}

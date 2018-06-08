@@ -28,13 +28,24 @@ export function reducer(state = initialState, action: UmaruActionsUnion) {
       return {
         ...state,
         emotion: 'sad',
-        message
+        isVisible: true,
+        message: action.payload.message
       };
     case UmaruActionType.QUESTION_MESSAGE:
       return {
         ...state,
         emotion: 'question',
-        message
+        message: action.payload.message
+      };
+    case UmaruActionType.HIDE:
+      return {
+        ...state,
+        isVisible: false
+      };
+    case UmaruActionType.SHOW:
+      return {
+        ...state,
+        isVisible: true
       };
     default:
       return state;

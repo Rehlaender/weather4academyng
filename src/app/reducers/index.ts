@@ -9,6 +9,7 @@ import {
 import * as fromCities from './cities.reducer';
 import * as fromSavedCities from './savedCities.reducer';
 import * as fromUmaru from './umaru.reducer';
+import * as fromTemperature from './temperature.reducer';
 
 import { environment } from '../../environments/environment';
 
@@ -21,7 +22,8 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
   cities: fromCities.reducer,
   savedCities: fromSavedCities.reducer,
-  umaru: fromUmaru.reducer
+  umaru: fromUmaru.reducer,
+  temperature: fromTemperature.reducer,
 };
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {

@@ -41,6 +41,7 @@ export class SavedCitiesEffects {
         // If request fails, dispatch failed action
         catchError((error) => of(
           { type: SavedCitiesActionType.SEARCH_CITY_FAILURE, payload: error },
+          { type: UmaruActionType.FAILURE_MESSAGE, payload: {message: umaruMessages.failureCityMessage(error)} }
         ))
       )
     )

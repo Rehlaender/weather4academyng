@@ -5,7 +5,8 @@ export enum UmaruActionType {
   FAILURE_MESSAGE = '[Umaru] say a failure message',
   QUESTION_MESSAGE = '[Umaru] say a question message',
   TOGGLE_VISIBILITY = '[Umaru] toggle visibility',
-
+  HIDE = '[Umaru] hide',
+  SHOW = '[Umaru] show',
 }
 
 export class SuccessMessage implements Action {
@@ -28,7 +29,18 @@ export class ToggleVisibility implements Action {
   constructor(public payload: any) {}
 }
 
+export class Hide implements Action {
+  readonly type = UmaruActionType.HIDE;
+}
+
+export class Show implements Action {
+  readonly type = UmaruActionType.SHOW;
+}
+
+
 export type UmaruActionsUnion = SuccessMessage
 | FailureMessage
 | QuestionMessage
-| ToggleVisibility;
+| ToggleVisibility
+| Hide
+| Show;
