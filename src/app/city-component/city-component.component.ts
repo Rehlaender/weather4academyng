@@ -13,7 +13,6 @@ export class CityComponentComponent implements OnInit {
   constructor() { }
 
   dispatchSayHi(city) {
-     console.log(city, 'lel');
      this.sayHi.emit(city);
   }
 

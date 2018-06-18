@@ -1,0 +1,28 @@
+<form>
+  <div class="form-group">
+
+    <label for="searchBy">Search a location for weather reporting:</label>
+    <div class="radioGroup">
+      <div class="pointer" (click)="setSearchBy('byCity')" [ngClass]="{'selected': model.searchBy === 'byCity'}">search by city</div>
+      <div class="pointer" (click)="setSearchBy('byCityAndCountry')" [ngClass]="{'selected': model.searchBy === 'byCityAndCountry'}">search by city and country</div>
+      <div class="pointer" (click)="setSearchBy('byId')" [ngClass]="{'selected': model.searchBy === 'byId'}">search by city id</div>
+    </div>
+
+    <div class="form-control" *ngIf="model.searchBy === 'byCity' || model.searchBy === 'byCityAndCountry'">
+      <label for="city">city name:</label>
+      <input type="text" class="form-control" id="city" required
+              [(ngModel)]="model.city" name="city">
+    </div>
+    <div class="form-control" *ngIf="model.searchBy === 'byCityAndCountry'">
+      <label for="country">country name:</label>
+      <input type="text" class="form-control" id="city" required
+              [(ngModel)]="model.country" name="city">
+    </div>
+    <div class="form-control" *ngIf="model.searchBy === 'byId'">
+      <label for="cityId">city id: </label>
+      <input type="text" class="form-control" id="cityId" required
+              [(ngModel)]="model.id" name="cityId">
+    </div>
+  </div>
+  <button *ngIf="model.searchBy != ''" type="button" class="btn btn-default" (click)="addCity(model)">Add city</button>
+</form>

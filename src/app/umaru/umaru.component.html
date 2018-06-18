@@ -1,0 +1,8 @@
+<div [ngClass]="{'isVisible':  (umaru$ | async).isVisible === true }" class="umaru-container">
+  <div class="message-container">
+    {{ (umaru$ | async).message }}
+  </div>
+  <div class="umaru">
+    <img [src]="returnMood((umaru$ | async))" alt="">
+  </div>
+</div>

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { INCREMENT, DECREMENT, RESET, SAYHI } from './store/counter.reducer';
+
+import { AddOneTic } from './actions/count.actions';
 
 interface AppState {
   count: number;
@@ -13,29 +14,20 @@ interface AppState {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  count$: Observable<number>;
+export class AppComponent implements OnInit {
+  count$: Observable<any>;
   title = 'app';
-  cities = [
-    { id: 1, name: "monterrey"}, {id: 2, name: "not monterrey" }
-  ]
   constructor(private store: Store<AppState>) {
     this.count$ = store.pipe(select('count'));
   }
 
-  increment() {
-    this.store.dispatch({ type: INCREMENT });
+  startTimer() {
+    setInterval(() => {
+      this.store.dispatch(new AddOneTic());
+    }, 1000);
   }
 
-  decrement() {
-    this.store.dispatch({ type: DECREMENT });
-  }
-
-  reset() {
-    this.store.dispatch({ type: RESET });
-  }
-
-  sayHi(city) {
-    this.store.dispatch({ type: SAYHI, payload: city });
+  ngOnInit() {
+    this.startTimer();
   }
 }

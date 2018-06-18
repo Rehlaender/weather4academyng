@@ -1,0 +1,33 @@
+.city {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid white;
+  padding: 0.5em;
+  margin: 0.5em 1em;
+  border-bottom: 7px solid lightgray;
+  position: relative;
+}
+
+.city > .buttonContainer {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.city > .buttonContainer > span {
+  margin-left: 10px;
+}
+
+.city > .buttonContainer > span:hover > i {
+  cursor: pointer;
+  font-size: 1em;
+}
+.city > .buttonContainer > .deleteButton:hover > i {
+  color: #ff8383;
+}
+
+.city > .buttonContainer > .detailButton:hover > i {
+  color: #81ff76;
+}

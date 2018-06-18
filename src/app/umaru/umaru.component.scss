@@ -1,0 +1,32 @@
+.umaru-container {
+  position: absolute;
+  bottom: -1000px;
+  transition: all 200ms linear;
+  transition-delay: 150ms;
+  right: 0px;
+  z-index: 10000;
+}
+
+.umaru-container.isVisible {
+  bottom: 0px;
+}
+
+.umaru {
+  img {
+    width: 30vw;
+    height: auto;
+  }
+}
+
+.message-container {
+  height: auto;
+  background: white;
+  font-size: 1em;
+  position: relative;
+  left: -100px;
+  padding: 1em;
+  border-radius: 1em;
+  word-wrap: break-word;
+  text-align: center;
+  color: #F08959;
+}
