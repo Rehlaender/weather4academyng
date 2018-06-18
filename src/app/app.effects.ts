@@ -16,19 +16,19 @@ import {
 @Injectable()
 export class AppEffects {
 
-  @Effect()
-  reloadCities$: Observable<Action> = this.actions$.pipe(
-    ofType(CountActionType.ADD_ONE_TIC),
-    map(action => {
-        console.log(action);
-        if(action === 3600) {
-          return { type: UmaruActionType.QUESTION_MESSAGE, payload: {message: 'i will update your cities'} }
-        } else {
-          return { type: UmaruActionType.NULL }
-        }
-      }
-    )
-  );
+  // @Effect()
+  // reloadCities$: Observable<Action> = this.actions$.pipe(
+  //   ofType(CountActionType.ADD_ONE_TIC),
+  //   map(action => {
+  //       console.log(action);
+  //       if(action === 3600) {
+  //         return { type: UmaruActionType.QUESTION_MESSAGE, payload: {message: 'i will update your cities'} }
+  //       } else {
+  //         return { type: UmaruActionType.NULL }
+  //       }
+  //     }
+  //   )
+  // );
 
   constructor(private http: HttpClient, private actions$: Actions) {}
 }
